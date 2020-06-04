@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- 配置连接池: -->
+	<!-- 引入外部属性文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	<!-- 配置C3P0连接池: -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driver}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="user" value="${jdbc.user}"/>
+		<property name="password" value="${jdbc.password}"/>
+	</bean>
+	
+	<!-- Hibernate的相关信息 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- 注入连接池 -->
+		<property name="dataSource" ref="dataSource"/>
+		<!-- 配置Hibernate的其他的属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.connection.autocommit">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<!-- 配置Hibernate的映射文件 -->
+
+	</bean>
+	
+<!--	&lt;!&ndash; 事务管理: &ndash;&gt;-->
+<!--	&lt;!&ndash; 事务管理器 &ndash;&gt;-->
+<!--	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">-->
+<!--		<property name="sessionFactory" ref="sessionFactory"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; 开启注解事务 &ndash;&gt;-->
+<!--	<tx:annotation-driven transaction-manager="transactionManager"/>-->
+<!--	-->
+<!--	&lt;!&ndash; Action的配置 ===========================&ndash;&gt;-->
+<!--	-->
+<!--	&lt;!&ndash; 首页访问的Action &ndash;&gt;-->
+<!--	<bean id="indexAction" class="cn.itcast.shop.index.action.IndexAction" scope="prototype">-->
+<!--		<property name="categoryService" ref="categoryService"/>-->
+<!--		<property name="productService" ref="productService"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; 配置验证码Action &ndash;&gt;-->
+<!--	<bean id="checkImgAction" class="cn.itcast.shop.user.action.CheckImgAction" scope="prototype">-->
+<!--		-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; 用户模块的Action &ndash;&gt;-->
+<!--	<bean id="userAction" class="cn.itcast.shop.user.action.UserAction" scope="prototype">-->
+<!--		&lt;!&ndash; 注入Service &ndash;&gt;-->
+<!--		<property name="userService" ref="userService"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; 商品模块的Action &ndash;&gt;-->
+<!--	<bean id="productAction" class="cn.itcast.shop.product.action.ProductAction" scope="prototype">-->
+<!--		<property name="productService" ref="productService"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; 购物车的Action &ndash;&gt;-->
+<!--	<bean id="cartAction" class="cn.itcast.shop.cart.action.CartAction" scope="prototype">-->
+<!--		<property name="productService" ref="productService"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; 配置OrderAction &ndash;&gt;-->
+<!--	<bean id="orderAction" class="cn.itcast.shop.order.action.OrderAction" scope="prototype">-->
+<!--		<property name="orderService" ref="orderService"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; 配置后台登录的Action &ndash;&gt;-->
+<!--	<bean id="adminUserAction" class="cn.itcast.shop.adminuser.action.AdminUserAction" scope="prototype">-->
+<!--		<property name="adminUserService" ref="adminUserService"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; 配置后台一级管理的Action &ndash;&gt;-->
+<!--	<bean id="adminCategoryAction" class="cn.itcast.shop.category.adminaction.AdminCategoryAction" scope="prototype">-->
+<!--		<property name="categoryService" ref="categoryService"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; 配置后台二级分类管理的Action &ndash;&gt;-->
+<!--	<bean id="adminCategorySecondAction" class="cn.itcast.shop.categorysecond.adminaction.AdminCategorySecondAction" scope="prototype">-->
+<!--		<property name="categorySecondService" ref="categorySecondService"/>-->
+<!--		<property name="categoryService" ref="categoryService"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; 配置后台商品管理的Action &ndash;&gt;-->
+<!--	<bean id="adminProductAction" class="cn.itcast.shop.product.adminaction.AdminProductAction" scope="prototype">-->
+<!--		<property name="productService" ref="productService"/>-->
+<!--		<property name="categorySecondService" ref="categorySecondService"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; 配置后台订单管理的Action &ndash;&gt;-->
+<!--	<bean id="adminOrderAction" class="cn.itcast.shop.order.adminaction.AdminOrderAction" scope="prototype">-->
+<!--		<property name="orderService" ref="orderService"/>-->
+<!--	</bean>-->
+<!--	&lt;!&ndash; 配置后台用户管理的Action &ndash;&gt;-->
+<!--	<bean id="userAdminAction" class="cn.itcast.shop.user.adminaction.UserAdminAction" scope="prototype">-->
+<!--		<property name="userService" ref="userService"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	-->
+<!--	&lt;!&ndash; Service的配置  ===========================&ndash;&gt;-->
+<!--	<bean id="userService" class="cn.itcast.shop.user.service.UserService">-->
+<!--		<property name="userDao" ref="userDao"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="categoryService" class="cn.itcast.shop.category.service.CategoryService">-->
+<!--		<property name="categoryDao" ref="categoryDao"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="productService" class="cn.itcast.shop.product.service.ProductService">-->
+<!--		<property name="productDao" ref="productDao"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="orderService" class="cn.itcast.shop.order.service.OrderService">-->
+<!--		<property name="orderDao" ref="orderDao"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="adminUserService" class="cn.itcast.shop.adminuser.service.AdminUserService">-->
+<!--		<property name="adminUserDao" ref="adminUserDao"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="categorySecondService" class="cn.itcast.shop.categorysecond.service.CategorySecondService">-->
+<!--		<property name="categorySecondDao" ref="categorySecondDao"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	&lt;!&ndash; Dao的配置  ===========================&ndash;&gt;-->
+<!--	<bean id="userDao" class="cn.itcast.shop.user.dao.UserDao">-->
+<!--		<property name="sessionFactory" ref="sessionFactory"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="categoryDao" class="cn.itcast.shop.category.dao.CategoryDao">-->
+<!--		<property name="sessionFactory" ref="sessionFactory"/>-->
+<!--	</bean>	-->
+<!--	-->
+<!--	<bean id="productDao" class="cn.itcast.shop.product.dao.ProductDao">-->
+<!--		<property name="sessionFactory" ref="sessionFactory"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="orderDao" class="cn.itcast.shop.order.dao.OrderDao">-->
+<!--		<property name="sessionFactory" ref="sessionFactory"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="adminUserDao" class="cn.itcast.shop.adminuser.dao.AdminUserDao">-->
+<!--		<property name="sessionFactory" ref="sessionFactory"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="categorySecondDao" class="cn.itcast.shop.categorysecond.dao.CategorySecondDao">-->
+<!--		<property name="sessionFactory" ref="sessionFactory"/>-->
+<!--	</bean>-->
+</beans>

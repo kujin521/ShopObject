@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hibernate_demo/hibernate_demo.iml" filepath="$PROJECT_DIR$/hibernate_demo/hibernate_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hibernate_demo1/hibernate_demo1.iml" filepath="$PROJECT_DIR$/hibernate_demo1/hibernate_demo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop_day01/shop_day01.iml" filepath="$PROJECT_DIR$/shop_day01/shop_day01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/struts2_hibernate_cuid/struts2_hibernate_cuid.iml" filepath="$PROJECT_DIR$/struts2_hibernate_cuid/struts2_hibernate_cuid.iml" />
+    </modules>
+  </component>
+</project>

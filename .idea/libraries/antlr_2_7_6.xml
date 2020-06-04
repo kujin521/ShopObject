@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="antlr-2.7.6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/hibernate_demo1/web/WEB-INF/lib/antlr-2.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/hibernate_demo1/web/WEB-INF/lib/commons-collections-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/hibernate_demo1/web/WEB-INF/lib/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/hibernate_demo1/web/WEB-INF/lib/hibernate3.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/hibernate_demo1/web/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/hibernate_demo1/web/WEB-INF/lib/hibernate-testing3.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/hibernate_demo1/web/WEB-INF/lib/javassist-3.9.0.GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/hibernate_demo1/web/WEB-INF/lib/jta-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/hibernate_demo1/web/WEB-INF/lib/mysql-connector-java-8.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/hibernate_demo1/web/WEB-INF/lib/slf4j-api-1.5.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
